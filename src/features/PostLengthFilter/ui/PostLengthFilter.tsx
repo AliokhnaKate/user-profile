@@ -11,9 +11,9 @@ export const PostLengthFilter: React.FC<FilterTitleModel> = ({
         <>
             <button
             onClick={onToggle}
-            title={`Показывать книги с заголовком от ${minLength} до ${maxLength} символов`}
+            title={`Покаать посты с заголовком от ${minLength} до ${maxLength} символов`}
             >
-                {isActive ? 'Показать короткие заголовки' : 'Показать все'}
+                {isActive ? 'Показать короткие посты' : 'Показать все'}
             </button>
         </>
     )
