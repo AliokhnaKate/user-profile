@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {url} from "../../../shared/constants/constants";
-import type {Post} from "../../../features/PostList/model/hooks/UsePosts";
-import type {UserModel} from "../model/types";
+import type {PostModel, UserModel} from "../model/types";
+import {getRandomPastDate} from "../../../shared/lib/utils/RandomPastDate";
 
 //функция createApi для создания API
 export const postsApi = createApi({
@@ -15,9 +15,15 @@ export const postsApi = createApi({
     endpoints: (builder) => ({
         //builder.query - создает GET-запрос (для получения данных)
         //Когда создается endpoint с builder.query(), RTK Query автоматически генерирует хук с именем use + НазваниеЭндпоинта + Query: useGetPostsQuery
-        getPosts: builder.query<Post[], void>({
+        getPosts: builder.query<PostModel[], void>({
             ///функция, возвращающая endpoint
             query: () => '/posts',
+            transformResponse: (responce: PostModel[]) => {
+                return responce.map((post) => ({
+                    ...post,
+                    date: getRandomPastDate()
+                }))
+            },
             providesTags: ['Posts']
         }),
     }),
