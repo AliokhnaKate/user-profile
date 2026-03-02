@@ -8,15 +8,15 @@ interface ItemCategory {
 };
 
 interface UserTabsProps  {
-    categoriesBooks: ItemCategory[],
+    sideNav: ItemCategory[],
 };
 
-function UserTabs({categoriesBooks}: UserTabsProps) {
+function UserTabs({sideNav}: UserTabsProps) {
 
     return (
         <>
-            <div className={styles.categories}>
-            {categoriesBooks.map(item => (
+            <div className={styles.sidebar}>
+            {sideNav.map(item => (
               <NavLink key={item.id} to={item.path}>
                 {item.text}
               </NavLink>

@@ -1,15 +1,9 @@
-import styles from '../../App.module.css';
+// import styles from '../../App.module.css';
 import UserTabs from '../UserTabs/UserTabs';
 
-function BookCategories() {
+function SideNav() {
 
-      const categoriesBooks = [
-        {id: 'Recommend', path: '/recommended', text:'Рекомендуемые книги'},
-        {id: 'ForChildren', path: '/forChildren',  text:'Детские книги'},
-        {id: 'DetAndThril', path: '/detAndThril', text: 'Детективы и триллеры'},
-        {id: 'Fantasy', path: '/fantasy', text: 'Фантастика'},
-        {id: 'Fiction', path: '/fiction', text: 'Художественные книги'},
-        
+      const sideNav = [        
         {id: 'Users', path: '/users', text: 'Пользователи'},
         {id: 'Photos', path: '/albums/:id/photos', text: 'Фото пользователя'},
         {id: 'Comments', path: '/posts/:id/comments', text: 'Комментарии пользователей'},
@@ -21,13 +15,12 @@ function BookCategories() {
 
   return (
     <>
-    <aside className={styles.sidebar}>
-        <h3>Категории</h3>
+    <aside>
         <UserTabs 
-        categoriesBooks={categoriesBooks}/>
+        sideNav={sideNav}/>
     </aside>
     </>
   )
 }
 
-export default BookCategories;
+export default SideNav;

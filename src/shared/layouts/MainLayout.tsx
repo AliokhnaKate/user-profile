@@ -2,7 +2,7 @@ import {useCallback, useState} from "react";
 import type {LoadingStates} from "../../entities/post/models/LoadingStates";
 import {Outlet} from "react-router-dom";
 import {PostLengthFilter} from "../../features/PostLengthFilter/ui/PostLengthFilter";
-import BookCategories from "../../widgets/PostList/BookCategories";
+import SideNav from "../../widgets/PostList/SideNav";
 
 export interface MainOutletContext {
   loadingStates: LoadingStates;
@@ -58,7 +58,7 @@ function MainLayout () {
                 maxLength={filterOptions.maxLength}
                 minLength={filterOptions.minLength}
             />
-            <BookCategories />
+            <SideNav />
             <Outlet context={{ loadingStates, updateLoading, filterOptions }} />
         </>
     )
