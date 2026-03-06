@@ -27,7 +27,8 @@ function MainLayout () {
     LoadingPosts: true,
     LoadingUserAlbums: true,
     LoadingUserPosts: true,
-    LoadingUserTodos: true
+    LoadingUserTodos: true,
+    LoadingUser: true
     })
 
     //ф-я обновления состояния компонента
@@ -52,14 +53,16 @@ function MainLayout () {
 
     return (
         <>
-            <PostLengthFilter 
+            {/* <PostLengthFilter 
                 isActive={isFilterActive}
                 onToggle={toggle}
                 maxLength={filterOptions.maxLength}
                 minLength={filterOptions.minLength}
-            />
-            <SideNav />
-            <Outlet context={{ loadingStates, updateLoading, filterOptions }} />
+            /> */}
+            <div>
+              <SideNav />
+              <Outlet context={{ loadingStates, updateLoading, filterOptions }} />
+            </div>
         </>
     )
 }

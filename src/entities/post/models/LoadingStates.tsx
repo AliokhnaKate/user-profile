@@ -10,5 +10,6 @@ export interface LoadingStates {
   LoadingPosts: boolean;
   LoadingUserAlbums: boolean;
   LoadingUserPosts: boolean;
-  LoadingUserTodos: boolean
+  LoadingUserTodos: boolean,
+  LoadingUser: boolean
 }

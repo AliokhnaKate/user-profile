@@ -1,7 +1,9 @@
-// import {useMemo} from "react";
+import {useMemo} from "react";
 import styles from '../../App.module.css';
 import {postsApi} from "../../entities/[entity]/api/Api";
 import type {PostModel} from "../../entities/[entity]/model/types";
+import {useUsers} from "../../entities/user/lib/UseUsers";
+import PostCard from "../../entities/post/ui/PostCard";
 // import filterByLengthTitle from "../../features/PostLengthFilter/lib/filterByLength";
 
 const {useGetPostsQuery} = postsApi;
@@ -14,29 +16,44 @@ const {useGetPostsQuery} = postsApi;
 //   };
 // }
 
+export interface PostsWithUserName extends PostModel {
+  userName:string
+}
+
 // function Posts({filterOptions} : FilteredProps) {
 function Posts() {
   const {data: posts} = useGetPostsQuery();
+  const {users, getUserById} = useUsers();
 
   // const filteredPosts =useMemo(() => {
   //     return filterOptions?.shouldFilter
   //   ? posts!.filter(post => filterByLengthTitle(post, filterOptions))
   //   : posts;
   //   }, [posts]);
+    
+    const postsWithUserNames: PostsWithUserName[] = useMemo(() => {
+      if (!posts || !users) return [];
 
+      if (posts && users) {
+        return posts.map(post => ({
+          ...post,
+          userName: getUserById(post.userId)?.name || 'Неизвестный пользователь',
+          }))
+      };
+
+      return [];
+    }, [posts, users, getUserById]);
+  
   return (
     <>
-      <div className={styles.posts}>Посты пользователей</div>
-      {posts?.map((post: PostModel) => (
-        <div key={post.id}>
-          <h2>Посты пользователя {post.userId}</h2>
-          <div className={styles.post}>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              <small>{new Date(post.date as string).toLocaleString()}</small>
+      <div className={styles.posts}>
+        {postsWithUserNames?.map((post: PostsWithUserName) => (
+          <div key={post.id}>
+            <PostCard {...post} />
           </div>
-        </div>
-      ))}
+          ))
+        }
+      </div>
     </>
   )
 }

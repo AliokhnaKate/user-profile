@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -46,9 +52,6 @@
     display: flex;
   }
 
-  .posts {
+  /* .posts {
     max-width: 600px;
-  }
-  .post {
-    max-width: 400px;
-  }
+  } */

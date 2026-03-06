@@ -28,6 +28,7 @@ function UsePortal (id: string = 'portal-root') {
 
   //Создание компонента Portal
   const Portal = ({onClose, children}:  PropsWithChildren<PortalProps>) => {
+
     //rootRef.current - весь div в компоненте App, обернутый в Portal
     return rootRef.current ? createPortal(
       // <div className={styles.modal}>
