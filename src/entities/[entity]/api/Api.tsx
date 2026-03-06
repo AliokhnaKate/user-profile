@@ -22,7 +22,10 @@ export const postsApi = createApi({
                 return responce.map((post) => ({
                     ...post,
                     date: getRandomPastDate()
-                }))
+                })).sort((a, b) => {
+                    // Добавляем getTime() для преобразования Date в число
+                    return new Date(b.date).getTime() - new Date(a.date).getTime()
+                    })
             },
             providesTags: ['Posts']
         }),

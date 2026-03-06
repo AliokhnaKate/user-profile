@@ -1,3 +1,5 @@
+import type {ReactNode} from "react"
+
 export interface PostModel {
     userId: number,
     id: number,
@@ -21,6 +23,15 @@ export interface UserModel {
             lng: string
         }
     }
+}
+
+export interface UserCardModel {
+    user?: UserModel
+}
+
+export type ItemListProps<T extends UserModel> = {
+    items: T[];
+    renderItem: (user: T) => ReactNode;
 }
 
 export interface UserCommentModel {

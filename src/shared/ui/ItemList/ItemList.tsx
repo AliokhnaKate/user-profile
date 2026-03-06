@@ -1,10 +1,4 @@
-import type {ReactNode} from "react";
-import type {UserModel} from "../../../entities/[entity]/model/types";
-
-type ItemListProps<T extends UserModel> = {
-    items: T[];
-    renderItem: (user: T) => ReactNode;
-}
+import type {ItemListProps, UserModel} from "../../../entities/[entity]/model/types";
 
 function ItemList<T extends UserModel>(props: ItemListProps<T>) {
     const {items, renderItem} = props;
