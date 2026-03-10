@@ -17,24 +17,27 @@ const {useGetPostsQuery} = postsApi;
 // }
 
 export interface PostsWithUserName extends PostModel {
-  userName:string
+  userName: string,
 }
 
 // function Posts({filterOptions} : FilteredProps) {
 function Posts() {
   const {data: posts} = useGetPostsQuery();
-  const {users, getUserById} = useUsers();
 
+  const {users, getUserById} = useUsers();
+  
   // const filteredPosts =useMemo(() => {
   //     return filterOptions?.shouldFilter
   //   ? posts!.filter(post => filterByLengthTitle(post, filterOptions))
   //   : posts;
-  //   }, [posts]);
+  //   }, [posts]);    
     
     const postsWithUserNames: PostsWithUserName[] = useMemo(() => {
       if (!posts || !users) return [];
 
       if (posts && users) {
+        localStorage.setItem('posts', JSON.stringify(posts));
+
         return posts.map(post => ({
           ...post,
           userName: getUserById(post.userId)?.name || 'Неизвестный пользователь',

@@ -3,17 +3,16 @@ import styles from '../../../App.module.css';
 import type {PostsWithUserName} from '../../../widgets/PostList/Posts';
 import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
-import UsePortal from '../../../shared/ui/Modal/PortalAboutProject';
+import PostDetailModal from '../../../shared/ui/Modal/PostDetailModal';
+import {commentsApi} from '../../[entity]/api/Api';
+import UserPostComments from '../../../widgets/PostList/UserPostComments';
+
+const {useGetCommentsQuery} = commentsApi;
 
 function PostCard (post: PostsWithUserName) {
-    //создаем компонент Portal через хук, тк хуки нельзя использовать как компоненты
-    const Portal = UsePortal('portal-root');
     const [showModal, setShowModal] = useState(false);
+    const {data: commentsPosts} = useGetCommentsQuery(post.id);
 
-    const handleInputClick = (e: React.MouseEvent) => {
-      e.stopPropagation()
-    };
-    
     return (
         <>
             <div key={post.id}>
@@ -22,39 +21,34 @@ function PostCard (post: PostsWithUserName) {
                 </NavLink>
     
                 <div className={styles.post}>
-                    <h3>{post.title}</h3>
+                    <h4>{post.title}</h4>
                     <p>{post.body}</p>
+                    <UserPostComments
+                        comments={commentsPosts}
+                        showControls={true}
+                        hidden={true}
+                        expandComment={'показать комментарии'}
+                        collapseComment={'свернуть'}
+                    />
                     <div>
-                        <button onClick={(e) => {
+                        <span onClick={(e) => {
                                     e.stopPropagation()
-                                    setShowModal(true)}
+                                    setShowModal(true)
+                                    }
                                 }>
                             <FaRegComment size={14} />
-                        </button>
+                        </span>
                         <small>{new Date(post.date as string).toLocaleString()}</small>
                     </div>
 
                     {showModal && (
-                        <Portal onClose={() => setShowModal(false)}>
-                            <div className={styles.post}>
-                                <Portal.Header>
-                                    <h3>{post.title}</h3>
-                                </Portal.Header>
-
-                                <Portal.Body>
-                                    <p>{post.body}</p>
-                                    <small>{new Date(post.date as string).toLocaleString()}</small>
-                                    <div>
-                                        <input type='text' placeholder={'Написать комментарий'} onClick={handleInputClick} />
-                                        <button>Отправить</button>
-                                    </div>
-                                </Portal.Body>
-
-                                <Portal.Footer>
-                                    <button onClick={() => setShowModal(false)}>OK</button>
-                                </Portal.Footer>
-                            </div>
-                        </Portal>
+                        <PostDetailModal
+                            post={post}
+                            onClose={() => {
+                                setShowModal(false)}
+                            }
+                            comments={commentsPosts}
+                        />
                     )}
                 </div>
             </div>

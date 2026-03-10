@@ -4,7 +4,6 @@ import ClickableBox from "../../../shared/ui/Button/Button";
 import UserAlbums from "../../../widgets/PostList/UserAlbums";
 import UserPosts from "../../../widgets/PostList/UserPosts";
 import UserTodos from "../../../widgets/PostList/UserTodos";
-import UserPostComments from "../../../widgets/PostList/UserPostComments";
 import type {UserModel} from "../../[entity]/model/types";
 
 interface UserCardProps {
@@ -52,8 +51,6 @@ function UserCard({user}: UserCardProps) {
                         {show === 'todos' && <UserTodos />}
                     </ClickableBox>
                 </div>
-                                        
-                <UserPostComments />
             </div>
         </>
     )
