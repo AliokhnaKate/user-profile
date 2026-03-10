@@ -5,4 +5,5 @@ export interface CommentModel {
     collapseComment: string;
     expandComment: string;
     hidden: boolean;
+    showControls: boolean;
 }

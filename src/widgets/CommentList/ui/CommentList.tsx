@@ -18,9 +18,9 @@ export const CommentList: React.FC<CommentModel> = ({
         <>
             <div>
                 <div>
-                    <button onClick={toggleCollapse}>
+                    <div onClick={toggleCollapse}>
                         {isCollapsed ? expandComment : collapseComment}
-                    </button>
+                    </div>
 
                     {!isCollapsed && (
                         <div>{children}</div>

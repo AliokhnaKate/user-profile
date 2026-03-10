@@ -1,19 +1,34 @@
-import {commentsApi} from "../../entities/[entity]/api/Api";
 import type {UserCommentModel} from "../../entities/[entity]/model/types";
 import {CommentList} from "../CommentList/ui/CommentList";
-const {useGetCommentsQuery} = commentsApi;
 
-function UserPostComments () {
+interface UserPostCommentsProps {
+  comments: UserCommentModel[],
+  showControls: boolean,
+  hidden: boolean,
+  collapseComment: string,
+  expandComment: string,
+}
 
-const {data: posts} = useGetCommentsQuery(1);
+function UserPostComments ({
+  comments,
+  showControls,
+  hidden,
+  collapseComment,
+  expandComment,
+  }: UserPostCommentsProps) {
 
   return (
     <>
-      <CommentList collapseComment={'свернуть'} expandComment={'развернуть'} hidden={true}>
-        <div>Комментарии пользователя</div>
-        {posts?.map((post: UserCommentModel) => (
-            <div key={post.id}>
-              <span>{post.body}</span>
+      <CommentList
+        collapseComment={collapseComment}
+        expandComment={expandComment}
+        hidden={showControls ? hidden : false}
+        showControls={showControls}
+      >
+        {comments?.map((comment: UserCommentModel) => (
+            <div key={comment.id}>
+              <h5>{comment.email}</h5>
+              <span>{comment.body}</span>
             </div>
           )
         )}

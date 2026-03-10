@@ -1,24 +1,21 @@
-import {useEffect, useRef, type PropsWithChildren, type ReactNode} from "react";
+import {useRef, type PropsWithChildren, type ReactNode} from "react";
 import {createPortal} from "react-dom";
 import styles from '../../../App.module.css';
 
-
 function UsePortal (id: string = 'portal-root') {
-  // useRef тип: React.MutableRefObject<null>
-  const rootRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    let container = document.getElementById(id) as HTMLDivElement | null;
-
+  const getContainer = () => {
+    let container = document.getElementById(id);
     if (!container) {
       container = document.createElement('div');
       container.id = id;
       document.body.appendChild(container);
     }
+    return container as HTMLDivElement;
+  };
 
-    //Сохраняем ссылку в rootRef.current
-    rootRef.current = container;
-  }, [id]);
+  // Используем ref, но инициализируем сразу
+  const rootRef = useRef<HTMLDivElement>(getContainer());
 
   // Типизируем пропсы компонента Portal
   interface PortalProps {
@@ -31,20 +28,12 @@ function UsePortal (id: string = 'portal-root') {
 
     //rootRef.current - весь div в компоненте App, обернутый в Portal
     return rootRef.current ? createPortal(
-      // <div className={styles.modal}>
-      //     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-      //       <button className={styles.modalContent__closeButton} onClick={onClose} aria-label="Закрыть">
-      //           <span></span>
-      //           <span></span>
-      //       </button>
-      //       {children}
-      //     </div>
-      // </div>
-      // , rootRef.current
-      // ) : null;
-
-      <div className={styles.modal} onClick={onClose}>
-          <div className={styles.modalContent}>
+      <div className={styles.modal}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <button className={styles.modalContent__closeButton} onClick={onClose} aria-label="Закрыть">
+                <span></span>
+                <span></span>
+            </button>
             {children}
           </div>
       </div>
@@ -55,14 +44,12 @@ function UsePortal (id: string = 'portal-root') {
   Portal.Header = ({children, onClose}: {children: ReactNode; onClose?: () => void }) => {
                   return (
                     <div className={styles.header}>
-                      {onClose && (
                         <button className={styles.header__closeButton}
-                        onClick={onClose}
-                        aria-label="Закрыть">
+                                onClick={onClose}
+                                aria-label="Закрыть">
                           <span></span>
                           <span></span>
                         </button>
-                      )}
                       <div className={styles.headerContent}>{children}</div>
                     </div>
                   )
