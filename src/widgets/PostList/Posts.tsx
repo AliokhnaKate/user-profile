@@ -30,7 +30,7 @@ function Posts() {
   //     return filterOptions?.shouldFilter
   //   ? posts!.filter(post => filterByLengthTitle(post, filterOptions))
   //   : posts;
-  //   }, [posts]);    
+  //   }, [posts]);
     
     const postsWithUserNames: PostsWithUserName[] = useMemo(() => {
       if (!posts || !users) return [];
