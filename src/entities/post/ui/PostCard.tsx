@@ -16,6 +16,7 @@ function PostCard (post: PostsWithUserName) {
     return (
         <>
             <div key={post.id}>
+                {/* NavLink - это навигация между страницами */}
                 <NavLink key={post.userId} to={`/users/${post.userId}`}>
                     <h2>{post.userName}</h2>
                 </NavLink>
@@ -44,9 +45,7 @@ function PostCard (post: PostsWithUserName) {
                     {showModal && (
                         <PostDetailModal
                             post={post}
-                            onClose={() => {
-                                setShowModal(false)}
-                            }
+                            onClose={() => setShowModal(false)}
                             comments={commentsPosts}
                         />
                     )}
