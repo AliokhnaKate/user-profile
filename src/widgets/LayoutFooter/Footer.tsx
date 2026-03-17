@@ -9,8 +9,8 @@ function Footer () {
   ];
 
   const contactsUs = [
-    {id: 'phone', icon: <FaPhone size={24}/>, text: '+375(29)506-40-10', href: ''},
-    {id: 'email', icon: <FaEnvelope size={24}/>, text: '5064010@mail.ru', href: ''},
+    {id: 'phone', icon: <FaPhone size={24}/>, text: '+375(29)506-40-10', href: `tel: +375(29)506-40-10`},
+    {id: 'email', icon: <FaEnvelope size={24}/>, text: '5064010@mail.ru', href: `mailto: 5064010@mail.ru`},
     {id: 'address', icon: <FaAddressBook size={24}/>, text: 'г.Минск, ул.Гвардейская', href: ''},
     {id: 'workschedule', icon: <FaClock size={24}/>, text: 'Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00', href: ''}
   ];
