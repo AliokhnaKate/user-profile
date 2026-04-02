@@ -4,25 +4,21 @@ import {RouterProvider} from 'react-router-dom';
 import {router} from './app/providers/router/Router';
 import styles from './App.module.css';
 import {ThemeSwitcher} from './features/ThemeSwitcher/ui/ThemeSwitcher';
-import {ThemeProvider} from './shared/lib/theme/ThemeProvider';
 
 function App() {
 
   return (
     <>
-    <div className={styles.wrapper}>
-      <div className={styles.app}>
-        <div className={styles.container}>
-            <Header />
-            <RouterProvider router={router} />
-            <Footer />
-            <ThemeProvider>
+        <div className={styles.wrapper}>
+          <div className={styles.app}>
+            <div className={styles.container}>
+                <Header />
+                <RouterProvider router={router} />
+                <Footer />
                 <ThemeSwitcher/>
-            </ThemeProvider>
+            </div>
+          </div>
         </div>
-        
-      </div>
-    </div>
     </>
   )
 }
