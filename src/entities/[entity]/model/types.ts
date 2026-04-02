@@ -22,6 +22,13 @@ export interface UserModel {
             lat: string,
             lng: string
         }
+    },
+    phone: string,
+    website: string,
+    company: {
+        name: string,
+        catchPhrase: string,
+        bs: string
     }
 }
 
@@ -29,9 +36,9 @@ export interface UserCardModel {
     user?: UserModel
 }
 
-export type ItemListProps<T extends UserModel> = {
-    items: T[];
-    renderItem: (user: T) => ReactNode;
+export type UsersListProps<T extends UserModel> = {
+    users: T[];
+    renderUsers: (user: T) => ReactNode;
 }
 
 export interface UserCommentModel {
@@ -42,7 +49,13 @@ export interface UserCommentModel {
     body: string
 }
 
-export interface UserAlbumPhotosModel {
+export interface UserPhotoAlbumsModel {
+    userId: number,
+    id: number,
+    title: string
+}
+
+export interface UserPhotoModel {
     albumId: number,
     id: number,
     title: string,

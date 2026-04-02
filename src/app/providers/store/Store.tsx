@@ -1,11 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {albumsApi, commentsApi, postsApi, todosApi, usersApi} from "../../../entities/[entity]/api/Api";
+import {commentsApi, postsApi, todosApi, userPhotoAlbumsApi, userPhotosApi, usersApi} from "../../../entities/[entity]/api/Api";
 
 export const store = configureStore({
     reducer: {
         [postsApi.reducerPath]: postsApi.reducer,
         [commentsApi.reducerPath]: commentsApi.reducer,
-        [albumsApi.reducerPath]: albumsApi.reducer,
+        [userPhotoAlbumsApi.reducerPath]: userPhotoAlbumsApi.reducer,
+        [userPhotosApi.reducerPath]: userPhotosApi.reducer,
         [todosApi.reducerPath]: todosApi.reducer,
         [usersApi.reducerPath]: usersApi.reducer
     },
@@ -13,7 +14,8 @@ export const store = configureStore({
         getDefaultMiddleware().concat(
             postsApi.middleware,
             commentsApi.middleware,
-            albumsApi.middleware,
+            userPhotoAlbumsApi.middleware,
+            userPhotosApi.middleware,
             todosApi.middleware,
             usersApi.middleware
             ),

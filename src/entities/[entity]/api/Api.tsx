@@ -48,19 +48,33 @@ export const commentsApi = createApi({
 
 export const { useGetCommentsQuery } = commentsApi;
 
-export const albumsApi = createApi({
-    reducerPath: 'albumsApi',
+export const userPhotoAlbumsApi = createApi({
+    reducerPath: 'userPhotoAlbumsApi',
     baseQuery: fetchBaseQuery({baseUrl: url}),
-    tagTypes: ['Albums'],
+    tagTypes: ['UserPhotoAlbums'],
     endpoints: (builder) => ({
-        getAlbums: builder.query({
-            query: (id) => `/albums/${id}/photos`,
-            providesTags: ['Albums']
+        getUserPhotoAlbums: builder.query({
+            query: (id) => `/users/${id}/albums`,
+            providesTags: ['UserPhotoAlbums']
         })
     })
 })
 
-export const { useGetAlbumsQuery } = albumsApi;
+export const { useGetUserPhotoAlbumsQuery } = userPhotoAlbumsApi;
+
+export const userPhotosApi = createApi({
+    reducerPath: 'userPhotosApi',
+    baseQuery: fetchBaseQuery({baseUrl: url}),
+    tagTypes: ['UserPhotos'],
+    endpoints: (builder) => ({
+        getUserPhotos: builder.query({
+            query: (id) => `albums/${id}/photos`,
+            providesTags: ['UserPhotos']
+        })
+    })
+})
+
+export const {useGetUserPhotosQuery} = userPhotosApi;
 
 export const todosApi = createApi({
     reducerPath: 'todosApi',

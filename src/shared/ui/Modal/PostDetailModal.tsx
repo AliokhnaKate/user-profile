@@ -1,5 +1,5 @@
-import type {PostsWithUserName} from "../../../widgets/PostList/Posts";
-import UsePortal from "./PortalAboutProject";
+import type {PostsWithUserName} from "../../../widgets/PostList/PostsList";
+import UsePortal from "./UsePortal";
 import styles from '../../../App.module.css';
 import UserPostComments from "../../../widgets/PostList/UserPostComments";
 import type {UserCommentModel} from "../../../entities/[entity]/model/types";

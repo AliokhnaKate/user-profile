@@ -3,7 +3,7 @@ import type {PostModel} from "../../../../entities/[entity]/model/types";
 
 const api = 'https://jsonplaceholder.typicode.com/posts';
 
-export const usePosts = () => {
+export const usePostsApi = () => {
     const [posts, setPosts] = useState<PostModel[]>([]);
 
      useEffect(() => {

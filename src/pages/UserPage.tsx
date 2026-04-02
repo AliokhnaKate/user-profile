@@ -9,9 +9,9 @@ const LoadingUser = withLoading(UserCard, {loadingText: 'Загрузка пол
 function UserPage() {
     const{loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
     const {id} = useParams();
-    const {users, getUserById} = useUsers();
+    const {getUserById} = useUsers();
 
-    const user = id ? getUserById(Number(id)): null;
+    const user = id ? getUserById(Number(id)) : null;
 
     return (
         <>

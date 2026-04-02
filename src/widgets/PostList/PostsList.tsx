@@ -1,12 +1,11 @@
-import {useMemo} from "react";
+import {useEffect, useMemo, useState} from "react";
 import styles from '../../App.module.css';
-import {postsApi} from "../../entities/[entity]/api/Api";
-import type {PostModel} from "../../entities/[entity]/model/types";
+import {postsApi, useGetUsersQuery} from "../../entities/[entity]/api/Api";
+import type {PostModel, UserModel} from "../../entities/[entity]/model/types";
 import {useUsers} from "../../entities/user/lib/UseUsers";
 import PostCard from "../../entities/post/ui/PostCard";
+import {UsePosts} from "../../entities/post/lib/UsePosts";
 // import filterByLengthTitle from "../../features/PostLengthFilter/lib/filterByLength";
-
-const {useGetPostsQuery} = postsApi;
 
 // interface FilteredProps {    
 //   filterOptions?: {
@@ -21,10 +20,24 @@ export interface PostsWithUserName extends PostModel {
 }
 
 // function Posts({filterOptions} : FilteredProps) {
-function Posts() {
-  const {data: posts} = useGetPostsQuery();
+function PostsList() {
+
+  // const [users, setUsers] = useState<UserModel[]>(() => {
+  //     const cashedUsers = localStorage.getItem('users');
+  //     return cashedUsers ? JSON.parse(cashedUsers) : [];
+  // });
+
+  // const {data: posts} = useGetPostsQuery();
+  // const {data: apiUsers} = useGetUsersQuery();
+
+  // useEffect(() => {
+  //     if (apiUsers) {
+  //         setUsers(apiUsers);
+  //     };
+  // }, [apiUsers])
 
   const {users, getUserById} = useUsers();
+  const {posts, getPostsById} = UsePosts();
   
   // const filteredPosts =useMemo(() => {
   //     return filterOptions?.shouldFilter
@@ -36,7 +49,7 @@ function Posts() {
       if (!posts || !users) return [];
 
       if (posts && users) {
-        localStorage.setItem('posts', JSON.stringify(posts));
+        // localStorage.setItem('posts', JSON.stringify(posts));
 
         return posts.map(post => ({
           ...post,
@@ -61,4 +74,4 @@ function Posts() {
   )
 }
 
-export default Posts;
+export default PostsList;

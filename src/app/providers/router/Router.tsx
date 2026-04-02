@@ -1,13 +1,15 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import MainLayout from "../../../shared/layouts/MainLayout";
 import UserPostsPage from "../../../pages/UserPostsPage";
-import UserAlbumsPage from "../../../pages/UserAlbumsPage";
 import UserTodosPage from "../../../pages/UserTodosPage";
 import PostsPage from "../../../pages/PostsPage";
-import AlbumPhotosPage from "../../../pages/AlbumPhotosPage";
 import UserPostCommentsPage from "../../../pages/UserPostCommentsPage";
 import UsersPage from "../../../pages/UsersPage";
 import UserPage from "../../../pages/UserPage";
+import MessagesList from "../../../widgets/messages-list/MessagesList";
+import UserPhotoAlbumsPage from "../../../pages/UserPhotoAlbumsPage";
+import UserPhotos from "../../../widgets/PostList/UserPhotos";
+import UserPhotosPage from "../../../pages/UserPhotosPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,11 +24,14 @@ export const router = createBrowserRouter([
             {path: "/users/:id", element: <UserPage />},
 
             //дочерние ресурсы пользователя
+            {path: "/messages", element: <MessagesList />},
             {path: "/users/:id/posts", element: <UserPostsPage />},
-            {path: "/users/:id/albums", element: <UserAlbumsPage />},
+            {path: "/users/:id/albums", element: <UserPhotoAlbumsPage />},
+            {path: "/albums/:id/photos", element: <UserPhotosPage />},
+
             {path: "/users/:id/todos", element: <UserTodosPage />},
             {path: "/posts/:id/comments", element: <UserPostCommentsPage />},
-            {path: "/albums/:id/photos", element: <AlbumPhotosPage />},
+            
             
             {path: "/users", element: <UsersPage />},
             

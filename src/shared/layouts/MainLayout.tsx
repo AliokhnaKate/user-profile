@@ -16,11 +16,6 @@ export interface MainOutletContext {
 
 function MainLayout () {
     const [loadingStates, setLoadingStates] = useState<LoadingStates>({
-    LoadingRecommendedBooks: true,
-    LoadingBooksForChildren: true,
-    LoadingDetectivesAndThrillers: true,
-    LoadingFantasyBooks: true,
-    LoadingFictionBooks: true,
     LoadingUsers: true,
     LoadingAlbumPhotos: true,
     LoadingPostCommentsUser: true,
