@@ -1,16 +1,17 @@
 import {useOutletContext} from "react-router-dom";
 import type {MainOutletContext} from "../shared/layouts/MainLayout";
 import {withLoading} from "../shared/lib/hoc/WithLoader";
-import AlbumPhotos from "../widgets/PostList/AlbumPhotos";
+import UserPhotos from "../widgets/PostList/UserPhotos";
 
-const LoadingAlbumPhotos = withLoading(AlbumPhotos, {loadingText: '...Загрузка раздела Фото пользователей', showSpinner: true});
+const LoadingAlbumPhotos = withLoading(UserPhotos);
 
-function AlbumPhotosPage () {
+function UserPhotosPage () {
     const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
 
     return (
         <>
             <LoadingAlbumPhotos
+                    mode='full'
                     loading={loadingStates.LoadingAlbumPhotos}
                     updateLoading={(value) => updateLoading('LoadingAlbumPhotos', value)}
                     filterOptions={filterOptions}
@@ -19,4 +20,4 @@ function AlbumPhotosPage () {
     )
 }
 
-export default AlbumPhotosPage;
+export default UserPhotosPage;

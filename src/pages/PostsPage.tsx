@@ -1,9 +1,9 @@
 import {useOutletContext} from "react-router-dom";
 import type {MainOutletContext} from "../shared/layouts/MainLayout";
 import {withLoading} from "../shared/lib/hoc/WithLoader";
-import Posts from "../widgets/PostList/Posts";
+import PostsList from "../widgets/PostList/PostsList";
 
-const LoadingPosts = withLoading(Posts, {loadingText: '...Загрузка раздела Посты всех пользователей', showSpinner: true});
+const LoadingPosts = withLoading(PostsList, {loadingText: '...Загрузка раздела Посты всех пользователей', showSpinner: true});
 
 function PostsPage () {
     const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();

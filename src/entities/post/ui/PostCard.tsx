@@ -1,6 +1,6 @@
 import {FaRegComment} from 'react-icons/fa';
 import styles from '../../../App.module.css';
-import type {PostsWithUserName} from '../../../widgets/PostList/Posts';
+import type {PostsWithUserName} from '../../../widgets/PostList/PostsList';
 import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
 import PostDetailModal from '../../../shared/ui/Modal/PostDetailModal';
