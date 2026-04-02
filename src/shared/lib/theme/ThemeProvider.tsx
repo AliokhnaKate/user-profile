@@ -9,7 +9,7 @@ export const ThemeProvider = ({children}: {children: ReactNode}) => {
 
   const [theme, setTheme] = React.useState<Theme>('light');
 
-//Применяем тему к body
+  //Применяем тему к body
   useEffect(() => {
     document.body.className = theme;
   }, [theme])
