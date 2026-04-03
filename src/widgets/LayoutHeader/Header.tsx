@@ -5,10 +5,10 @@ function Header () {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.logo}>
+        <a className={styles.logo} href={'/'}>
           <FaHome size={24} />
           <div className={styles.logoText}>Логотип</div>
-        </div>
+        </a>
         <form action='/search' method="get">
           <input type="text" placeholder="Поиск" />
           <button type="submit">Найти</button>

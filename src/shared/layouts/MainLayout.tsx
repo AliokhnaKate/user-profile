@@ -3,6 +3,7 @@ import type {LoadingStates} from "../../entities/post/models/LoadingStates";
 import {Outlet} from "react-router-dom";
 import {PostLengthFilter} from "../../features/PostLengthFilter/ui/PostLengthFilter";
 import SideNav from "../../widgets/PostList/SideNav";
+import Footer from "../../widgets/LayoutFooter/Footer";
 
 export interface MainOutletContext {
   loadingStates: LoadingStates;
@@ -57,6 +58,7 @@ function MainLayout () {
             <div>
               <SideNav />
               <Outlet context={{ loadingStates, updateLoading, filterOptions }} />
+              <Footer />
             </div>
         </>
     )

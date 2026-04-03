@@ -8,8 +8,8 @@ import UsersPage from "../../../pages/UsersPage";
 import UserPage from "../../../pages/UserPage";
 import MessagesList from "../../../widgets/messages-list/MessagesList";
 import UserPhotoAlbumsPage from "../../../pages/UserPhotoAlbumsPage";
-import UserPhotos from "../../../widgets/PostList/UserPhotos";
 import UserPhotosPage from "../../../pages/UserPhotosPage";
+import {HelpPage, SecurityHelpPage} from "../../../pages/help";
 
 export const router = createBrowserRouter([
     {
@@ -34,7 +34,10 @@ export const router = createBrowserRouter([
             
             
             {path: "/users", element: <UsersPage />},
-            
+
+            //помощь
+            {path: '/securityHelp', element: <SecurityHelpPage />},
+            {path: '/help', element: <HelpPage />},
         ],
     },
 ]);
