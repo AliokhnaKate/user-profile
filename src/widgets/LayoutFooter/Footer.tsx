@@ -1,23 +1,24 @@
 import {FaAddressBook, FaAppStore, FaClock, FaGooglePlay, FaPhone} from "react-icons/fa"
 import {FaEnvelope} from "react-icons/fa6";
 import styles from '../../App.module.css';
+import {NavLink} from "react-router-dom";
 
 function Footer () {
   const linksHelp = [
-    {id: 'security', text: 'Безопасность', url: '/'},
-    {id: 'help', text: 'Помощь', url: '/'}
+    {id: 'security', text: 'Безопасность', path: '/securityHelp'},
+    {id: 'help', text: 'Помощь', path: '/help'}
   ];
 
   const contactsUs = [
     {id: 'phone', icon: <FaPhone size={24}/>, text: '+375(29)506-40-10', href: `tel: +375(29)506-40-10`},
     {id: 'email', icon: <FaEnvelope size={24}/>, text: '5064010@mail.ru', href: `mailto: 5064010@mail.ru`},
-    {id: 'address', icon: <FaAddressBook size={24}/>, text: 'г.Минск, ул.Гвардейская', href: ''},
-    {id: 'workschedule', icon: <FaClock size={24}/>, text: 'Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00', href: ''}
+    {id: 'address', icon: <FaAddressBook size={24}/>, text: 'г.Минск, ул.Гвардейская', href: 'https://maps.google.com/?q=Минск,ул.Гвардейская,д.10'},
+    {id: 'workschedule', icon: <FaClock size={24}/>, text: 'Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00'}
   ];
 
   const mobileApplication = [
-    {id: 'GooglePlay', icon: <FaGooglePlay size={24}/>, text: 'Google Play', href: ''},
-    {id: 'AppStore', icon: <FaAppStore size={24}/>, text: 'App Store', href: ''}
+    {id: 'GooglePlay', icon: <FaGooglePlay size={24}/>, text: 'Google Play', href: 'https://play.google.com/store/games?hl=ru'},
+    {id: 'AppStore', icon: <FaAppStore size={24}/>, text: 'App Store', href: 'https://www.apple.com/app-store/'}
   ]
   return (
     <>
@@ -26,9 +27,9 @@ function Footer () {
           <h3>Помощь</h3>
           <div className={styles.help}>
             {linksHelp.map((item) => (
-              <a key={item.id} href={item.url}>
+              <NavLink key={item.id} to={item.path} target="_blank">
                 {item.text}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -36,10 +37,18 @@ function Footer () {
         <div className={styles.footerSection}>
           <h3>Наши контакты</h3>
           <div className={styles.contactsUs}>
-            {contactsUs.map(item => (
-              <a key={item.id} href={item.href}>
-                {item.icon} {item.text}
-              </a>
+            {contactsUs.map((contact) => (
+              <div key={contact.id} className={styles.contactItem}>
+                  {contact.icon}
+
+                  {contact.href ? (
+                      <a href={contact.href} target="_blank" rel="noopener noreferrer">
+                          {contact.text}
+                      </a>
+                  ) : (
+                      <span>{contact.text}</span>
+                  )}
+              </div>
             ))}
           </div>
         </div>
@@ -48,7 +57,7 @@ function Footer () {
           <h3>Скачайте мобильное приложение</h3>
           <div className={styles.mobileApplication}>
             {mobileApplication.map(item => (
-              <a key={item.id} href={item.href}>
+              <a key={item.id} href={item.href} target="_blank">
                 {item.icon} {item.text}
               </a>
             ))}

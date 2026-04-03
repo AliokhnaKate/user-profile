@@ -14,7 +14,7 @@ function App() {
             <div className={styles.container}>
                 <Header />
                 <RouterProvider router={router} />
-                <Footer />
+                {/* <Footer /> */}
                 <ThemeSwitcher/>
             </div>
           </div>
