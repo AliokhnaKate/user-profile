@@ -26,8 +26,6 @@ function WriteMessageModal({userSelected, userId, onClose} : WriteMessageModalPr
 
     //showPicker - управляет видимостью панели с эмодзи
     const [showPicker, setShowPicker] = useState(false);
-    const [posName, setPosName] = useState<number | null>(null);
-    const [posMessage, setPosMessage] = useState<number | null>(null);
 
     const [messages, setMessages] = useState<MessageUserProps[]>([])
 
@@ -39,7 +37,6 @@ function WriteMessageModal({userSelected, userId, onClose} : WriteMessageModalPr
     const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e) return;
         const pos=e.target.selectionStart;
-        setPosName(pos);
         setName(e.target.value);
         
         setTimeout(() => {
