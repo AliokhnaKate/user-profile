@@ -1,4 +1,3 @@
-import Footer from './widgets/LayoutFooter/Footer';
 import Header from './widgets/LayoutHeader/Header';
 import {RouterProvider} from 'react-router-dom';
 import {router} from './app/providers/router/Router';
@@ -14,7 +13,6 @@ function App() {
             <div className={styles.container}>
                 <Header />
                 <RouterProvider router={router} />
-                {/* <Footer /> */}
                 <ThemeSwitcher/>
             </div>
           </div>

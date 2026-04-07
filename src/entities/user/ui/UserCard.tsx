@@ -27,7 +27,7 @@ function UserCard({user}: UserCardProps) {
       
 
     const handleClick = (event: React.MouseEvent, type: TabType) => {
-        // Предотвращаем переход по ссылке
+        // Предотвращаем переход по ссылке, нужен для событий onSubmit формы, а не для onChange текстового поля. 
         event.preventDefault();
 
         if (type === show) {
