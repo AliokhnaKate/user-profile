@@ -7,8 +7,6 @@ import type {UserModel, UserPhotoModel} from "../../[entity]/model/types";
 import {useNavigate, useParams} from "react-router-dom";
 import UserPhotoAlbums from "../../../widgets/PostList/UserPhotoAlbums";
 import UserPhotos from "../../../widgets/PostList/UserPhotos";
-import {useGetUserPhotoAlbumsQuery, useGetUserPhotosQuery} from "../../[entity]/api/Api";
-import {usePhotos} from "../../photo/lib/usePhotos";
 
 interface UserCardProps {
     user?: UserModel | null
@@ -18,13 +16,8 @@ type TabType = "albums" | "photos" | "todos" | null;
 
 function UserCard({user}: UserCardProps) {
     const [show, setShow] = useState<TabType>('photos');
-    const [showAll, setShowAll] = useState(false);
     const navigate = useNavigate();
-    const {id} = useParams();
-
-    // const {data: apiPhotos} = useGetUserPhotosQuery(id);
-    // const {data: apiUserPhotoAlbums} = useGetUserPhotoAlbumsQuery(id);
-      
+    const {id} = useParams();      
 
     const handleClick = (event: React.MouseEvent, type: TabType) => {
         // Предотвращаем переход по ссылке, нужен для событий onSubmit формы, а не для onChange текстового поля. 

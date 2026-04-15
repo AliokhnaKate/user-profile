@@ -5,7 +5,6 @@ import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
 import PostDetailModal from '../../../shared/ui/Modal/PostDetailModal';
 import {commentsApi} from '../../[entity]/api/Api';
-import UserPostComments from '../../../widgets/PostList/UserPostComments';
 
 const {useGetCommentsQuery} = commentsApi;
 
@@ -24,13 +23,22 @@ function PostCard (post: PostsWithUserName) {
                 <div className={styles.post}>
                     <h4>{post.title}</h4>
                     <p>{post.body}</p>
-                    <UserPostComments
+                    {/* <UserPostComments
                         comments={commentsPosts}
                         showControls={true}
                         hidden={true}
                         expandComment={'показать комментарии'}
                         collapseComment={'свернуть'}
-                    />
+                    /> */}
+                    <div>
+                        <span onClick={(e) => {
+                                    e.stopPropagation()
+                                    setShowModal(true)
+                                    }
+                                }>
+                            показать комментарии
+                        </span>
+                    </div>
                     <div>
                         <span onClick={(e) => {
                                     e.stopPropagation()

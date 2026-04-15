@@ -1,6 +1,6 @@
 import EmojiPicker, {Categories, EmojiStyle, SuggestionMode, type EmojiClickData} from "emoji-picker-react";
 import UsePortal from "./UsePortal";
-import {useEffect, useRef, useState, type ChangeEvent, type FormEvent, type SyntheticEvent} from "react";
+import {useRef, useState, type ChangeEvent, type FormEvent} from "react";
 import {BsEmojiSmile} from "react-icons/bs";
 
 interface WriteMessageModalProps {

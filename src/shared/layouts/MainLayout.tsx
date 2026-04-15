@@ -1,18 +1,18 @@
 import {useCallback, useState} from "react";
 import type {LoadingStates} from "../../entities/post/models/LoadingStates";
 import {Outlet} from "react-router-dom";
-import {PostLengthFilter} from "../../features/PostLengthFilter/ui/PostLengthFilter";
 import SideNav from "../../widgets/PostList/SideNav";
 import Footer from "../../widgets/LayoutFooter/Footer";
+import Header from "../../widgets/LayoutHeader/Header";
 
 export interface MainOutletContext {
   loadingStates: LoadingStates;
   updateLoading: (component: keyof LoadingStates, value: boolean) => void;
-  filterOptions: {
-    shouldFilter: boolean;
-    maxLength: number;
-    minLength: number;
-  }
+//     filterOptions: {
+//     shouldFilter: boolean;
+//     maxLength: number;
+//     minLength: number;
+//   }
 };
 
 function MainLayout () {
@@ -35,17 +35,17 @@ function MainLayout () {
     }));
     }, []);
 
-    const [isFilterActive, setIsFilterActive] = useState(false);
+    // const [isFilterActive, setIsFilterActive] = useState(false);
 
-  const filterOptions = {
-    shouldFilter: !isFilterActive,
-    maxLength: 15,
-    minLength: 1
-  };
+    // const filterOptions = {
+    //     shouldFilter: !isFilterActive,
+    //     maxLength: 15,
+    //     minLength: 1
+    // };
 
-  const toggle = useCallback(() => {
-      setIsFilterActive(prev => !prev);
-  }, []);
+    // const toggle = useCallback(() => {
+    //     setIsFilterActive(prev => !prev);
+    // }, []);
 
     return (
         <>
@@ -56,8 +56,10 @@ function MainLayout () {
                 minLength={filterOptions.minLength}
             /> */}
             <div>
+              <Header />
               <SideNav />
-              <Outlet context={{ loadingStates, updateLoading, filterOptions }} />
+              <Outlet context={{ loadingStates, updateLoading}} />
+              {/* <Outlet context={{ loadingStates, updateLoading, filterOptions}} /> */}
               <Footer />
             </div>
         </>

@@ -1,28 +1,14 @@
 import type {UserModel} from "../../entities/[entity]/model/types";
-import {useGetUsersQuery} from "../../entities/[entity]/api/Api";
-import {useEffect, useState} from "react";
+import {useMemo, useState} from "react";
 import UsersList from "../../shared/ui/UsersList/UsersList";
 import WriteMessageModal from "../../shared/ui/Modal/WriteMessageModal";
 import {useUsers} from "../../entities/user/lib/UseUsers";
+import {useSearchParams} from "react-router-dom";
 
 function Users() {
-    // const [users, setUsers] = useState<UserModel[]>(() => {
-    //     const cashedUsers = localStorage.getItem('users');
-    //     return cashedUsers ? JSON.parse(cashedUsers) : [];
-    // });
-
-    // const {data: apiUsers} = useGetUsersQuery();
     const [userSelected, setUserSelected] = useState<string | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
     const [showModal, setShowModal] = useState(false);
-
-    // useEffect(() => {
-    //     if (apiUsers) {
-    //         setUsers(apiUsers);
-    //     };
-    // }, [apiUsers])
-
-    // localStorage.setItem('users', JSON.stringify(users));
 
     const {users} = useUsers();
     

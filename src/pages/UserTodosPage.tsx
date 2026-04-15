@@ -6,14 +6,15 @@ import UserTodos from "../widgets/PostList/UserTodos";
 const LoadingUserTodos = withLoading(UserTodos, {loadingText: '...Загрузка раздела Задачи пользователя', showSpinner: true});
 
 function UserTodosPage () {
-    const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
-
+    const {loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
+    // const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    
     return (
         <>
             <LoadingUserTodos
                     loading={loadingStates.LoadingUserTodos}
                     updateLoading={(value) => updateLoading('LoadingUserTodos', value)}
-                    filterOptions={filterOptions}
+                    // filterOptions={filterOptions}
             />
         </>
     )

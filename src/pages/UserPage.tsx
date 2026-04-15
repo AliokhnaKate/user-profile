@@ -7,7 +7,7 @@ import {useUsers} from "../entities/user/lib/UseUsers";
 const LoadingUser = withLoading(UserCard, {loadingText: 'Загрузка пользователя', showSpinner: true})
 
 function UserPage() {
-    const{loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const{loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
     const {id} = useParams();
     const {getUserById} = useUsers();
 
@@ -18,7 +18,6 @@ function UserPage() {
             <LoadingUser
                 loading={loadingStates.LoadingUser}
                 updateLoading = {(value) => updateLoading('LoadingUser', value)}
-                filterOptions = {filterOptions}
                 user={user}
             />
         </>

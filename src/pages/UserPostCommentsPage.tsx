@@ -6,14 +6,18 @@ import UserPostComments from "../widgets/PostList/UserPostComments";
 const LoadingPostCommentsUser = withLoading(UserPostComments, {loadingText: '...Загрузка раздела Посты комментариев пользователей', showSpinner: true});
 
 function UserPostCommentsPage () {
-    const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const {loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
 
     return (
         <>
             <LoadingPostCommentsUser
                     loading={loadingStates.LoadingPostCommentsUser}
                     updateLoading={(value) => updateLoading('LoadingPostCommentsUser', value)}
-                    filterOptions={filterOptions}
+                    comments={[]}
+                    showControls={true}
+                    hidden={true}
+                    expandComment={'показать комментарии'}
+                    collapseComment={'свернуть'}
             />
         </>
     )

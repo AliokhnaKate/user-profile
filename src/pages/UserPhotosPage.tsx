@@ -6,7 +6,7 @@ import UserPhotos from "../widgets/PostList/UserPhotos";
 const LoadingAlbumPhotos = withLoading(UserPhotos);
 
 function UserPhotosPage () {
-    const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const {loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
 
     return (
         <>
@@ -14,7 +14,6 @@ function UserPhotosPage () {
                     mode='full'
                     loading={loadingStates.LoadingAlbumPhotos}
                     updateLoading={(value) => updateLoading('LoadingAlbumPhotos', value)}
-                    filterOptions={filterOptions}
             />
         </>
     )

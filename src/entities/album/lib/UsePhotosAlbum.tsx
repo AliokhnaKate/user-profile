@@ -1,5 +1,5 @@
-import {useParams, useSearchParams} from "react-router-dom"
-import {useGetUserPhotoAlbumsQuery, useGetUserPhotosQuery} from "../../[entity]/api/Api";
+import {useParams} from "react-router-dom"
+import {useGetUserPhotoAlbumsQuery} from "../../[entity]/api/Api";
 import {useEffect, useState} from "react";
 import {type UserPhotoAlbumsModel} from "../../[entity]/model/types";
 
