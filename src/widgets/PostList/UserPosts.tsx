@@ -1,7 +1,8 @@
+import {useMemo} from "react";
 import {UsePosts} from "../../entities/post/lib/UsePosts";
 import PostCard from "../../entities/post/ui/PostCard";
 import type {PostsWithUserName} from "./PostsList";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 
 function UserPosts () {
   const {id} = useParams();
@@ -9,13 +10,37 @@ function UserPosts () {
 
   const postsUser = id ? getPostsById(Number(id)) : null;
 
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query');
+
+  const postsUserSearch = useMemo(() => {
+    const search = postsUser?.filter(item => item.userName.toLowerCase().includes(query?.toLowerCase()!) || item.title.toLowerCase().includes(query?.toLowerCase()!) || item.body.toLowerCase().includes(query?.toLowerCase()!));
+    return search;
+  }, [postsUser]);
+
   return (
     <>
-      {postsUser?.map((postUser: PostsWithUserName) => (
-        <div key={postUser.id}>
-          <PostCard {...postUser} />
-        </div>
-      ))}
+      <div>
+        {!query && (
+          <div>
+            {postsUser?.map((postUser: PostsWithUserName) => (
+              <div key={postUser.id}>
+                <PostCard {...postUser} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {query && (
+          <div>
+            {postsUserSearch?.map((postUser: PostsWithUserName) => (
+              <div key={postUser.id}>
+                <PostCard {...postUser} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   )
 }

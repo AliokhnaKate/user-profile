@@ -6,14 +6,13 @@ import UserPhotoAlbums from "../widgets/PostList/UserPhotoAlbums";
 const LoadingUserAlbums = withLoading(UserPhotoAlbums, {loadingText: '...Загрузка раздела Альбомы пользователя', showSpinner: true});
 
 function UserPhotoAlbumsPage () {
-    const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const {loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
 
     return (
         <>
             <LoadingUserAlbums
                     loading={loadingStates.LoadingUserAlbums}
                     updateLoading={(value) => updateLoading('LoadingUserAlbums', value)}
-                    filterOptions={filterOptions}
                     mode='full'
             />
         </>

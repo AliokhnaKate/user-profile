@@ -6,14 +6,13 @@ import Users from "../widgets/PostList/Users";
 const LoadingUsers = withLoading(Users, {loadingText: 'Загрузка пользователей', showSpinner: true})
 
 function UsersPage() {
-    const{loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const{loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
 
     return (
         <>
             <LoadingUsers
                 loading={loadingStates.LoadingUsers}
                 updateLoading = {(value) => updateLoading('LoadingUsers', value)}
-                filterOptions = {filterOptions}
             />
         </>
     )

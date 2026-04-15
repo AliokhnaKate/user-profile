@@ -6,14 +6,13 @@ import PostsList from "../widgets/PostList/PostsList";
 const LoadingPosts = withLoading(PostsList, {loadingText: '...Загрузка раздела Посты всех пользователей', showSpinner: true});
 
 function PostsPage () {
-    const {loadingStates, updateLoading, filterOptions} = useOutletContext<MainOutletContext>();
+    const {loadingStates, updateLoading} = useOutletContext<MainOutletContext>();
 
     return (
         <>
             <LoadingPosts
                     loading={loadingStates.LoadingPosts}
                     updateLoading={(value) => updateLoading('LoadingPosts', value)}
-                    filterOptions={filterOptions}
             />
         </>
     )

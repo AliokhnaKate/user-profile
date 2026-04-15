@@ -1,4 +1,3 @@
-import Header from './widgets/LayoutHeader/Header';
 import {RouterProvider} from 'react-router-dom';
 import {router} from './app/providers/router/Router';
 import styles from './App.module.css';
@@ -11,7 +10,6 @@ function App() {
         <div className={styles.wrapper}>
           <div className={styles.app}>
             <div className={styles.container}>
-                <Header />
                 <RouterProvider router={router} />
                 <ThemeSwitcher/>
             </div>

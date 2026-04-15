@@ -19,12 +19,12 @@ function UserPostComments ({
 
   return (
     <>
-      <CommentList
+      {/* <CommentList
         collapseComment={collapseComment}
         expandComment={expandComment}
         hidden={showControls ? hidden : false}
         showControls={showControls}
-      >
+      > */}
         {comments?.map((comment: UserCommentModel) => (
             <div key={comment.id}>
               <h5>{comment.email}</h5>
@@ -32,7 +32,7 @@ function UserPostComments ({
             </div>
           )
         )}
-      </CommentList>
+      {/* </CommentList> */}
     </>
   )
 }

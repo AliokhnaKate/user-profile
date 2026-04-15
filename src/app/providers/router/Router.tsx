@@ -18,26 +18,26 @@ export const router = createBrowserRouter([
         children: [
             //главная страница
             {index: true, element: <Navigate to='/posts' replace/>},
-            {path: "/posts", element: <PostsPage />},
+            {path: "/posts", element: <PostsPage />, handle: {searchPattern: "/posts", pageType: "posts_list"}},
 
             //страница пользователя
-            {path: "/users/:id", element: <UserPage />},
+            {path: "/users/:id", element: <UserPage />, handle: {searchPattern: "/users/:id", pageType: "user_list"}},
 
             //дочерние ресурсы пользователя
-            {path: "/messages", element: <MessagesList />},
-            {path: "/users/:id/posts", element: <UserPostsPage />},
-            {path: "/users/:id/albums", element: <UserPhotoAlbumsPage />},
-            {path: "/albums/:id/photos", element: <UserPhotosPage />},
+            {path: "/messages", element: <MessagesList />, handle: {searchPattern: "/messages", pageType: "messages_list"}},
+            {path: "/users/:id/posts", element: <UserPostsPage />, handle: {searchPattern: "/users/:id/posts", pageType: "userPosts_list"}},
+            {path: "/users/:id/albums", element: <UserPhotoAlbumsPage />, handle: {searchPattern: "/users/:id/albums", pageType: "userAlbums_list"}},
+            {path: "/albums/:id/photos", element: <UserPhotosPage />, handle: {searchPattern: "/albums/:id/photos", pageType: "userPhotosAlbum_list"}},
 
-            {path: "/users/:id/todos", element: <UserTodosPage />},
-            {path: "/posts/:id/comments", element: <UserPostCommentsPage />},
+            {path: "/users/:id/todos", element: <UserTodosPage />, handle: {searchPattern: "/users/:id/todos", pageType: "userTodos_list"}},
+            {path: "/posts/:id/comments", element: <UserPostCommentsPage />, handle: {searchPattern: "/posts/:id/comments", pageType: "userComments_list"}},
             
             
-            {path: "/users", element: <UsersPage />},
+            {path: "/users", element: <UsersPage />, handle: {searchPattern: "/users", pageType: "users_list"}},
 
             //помощь
-            {path: '/securityHelp', element: <SecurityHelpPage />},
-            {path: '/help', element: <HelpPage />},
+            {path: '/securityHelp', element: <SecurityHelpPage />, handle: {searchPattern: "/securityHelp", pageType: "securityHelp_list"}},
+            {path: '/help', element: <HelpPage />, handle: {searchPattern: "/help", pageType: "help_list"}},
         ],
     },
 ]);

@@ -9,11 +9,11 @@ interface OptionsLoading {
 export interface WithLoadingProps {
     loading?: boolean;
     updateLoading: (value: boolean) => void;
-    shouldFilter?: boolean;
-    filterOptions?: {
-        maxLength: number;
-        minLength: number;
-    };
+    // shouldFilter?: boolean;
+    // filterOptions?: {
+    // maxLength: number;
+    // minLength: number;
+    // };
 }
 
 // HOC: P extends object - дженерик для пропсов оборачиваемого компонента
