@@ -14,10 +14,6 @@ function UserPostCommentsPage () {
                     loading={loadingStates.LoadingPostCommentsUser}
                     updateLoading={(value) => updateLoading('LoadingPostCommentsUser', value)}
                     comments={[]}
-                    showControls={true}
-                    hidden={true}
-                    expandComment={'показать комментарии'}
-                    collapseComment={'свернуть'}
             />
         </>
     )

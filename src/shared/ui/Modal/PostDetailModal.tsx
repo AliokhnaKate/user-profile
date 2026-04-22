@@ -68,10 +68,7 @@ function PostDetailModal({post, onClose, comments}: PostDetailModalProps) {
                         <small>{new Date(post.date as string).toLocaleString()}</small>
                         <UserPostComments
                             comments={commentsPost}
-                            showControls={false}
-                            hidden={false}
-                            expandComment={''}
-                            collapseComment={''} />
+                        />
                     </Portal.Body>
 
                     <Portal.Footer>
