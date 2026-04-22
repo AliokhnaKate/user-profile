@@ -11,6 +11,7 @@ const {useGetCommentsQuery} = commentsApi;
 function PostCard (post: PostsWithUserName) {
     const [showModal, setShowModal] = useState(false);
     const {data: commentsPosts} = useGetCommentsQuery(post.id);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <>
@@ -22,14 +23,11 @@ function PostCard (post: PostsWithUserName) {
     
                 <div className={styles.post}>
                     <h4>{post.title}</h4>
-                    <p>{post.body}</p>
-                    {/* <UserPostComments
-                        comments={commentsPosts}
-                        showControls={true}
-                        hidden={true}
-                        expandComment={'показать комментарии'}
-                        collapseComment={'свернуть'}
-                    /> */}
+                    <span onClick={() => setIsExpanded(!isExpanded)}>
+                        {isExpanded ? post.body : post.body.slice(0, 10)}
+                        {!isExpanded && '...показать ещё'}
+                    </span>
+
                     <div>
                         <span onClick={(e) => {
                                     e.stopPropagation()
