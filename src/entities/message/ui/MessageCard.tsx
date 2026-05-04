@@ -1,4 +1,4 @@
-import type {MessageProps} from "../../../widgets/messages-list/MessagesList";
+import type {MessageProps} from "../../../widgets/messagesList/ui/MessagesList";
 
 function MessageCard(mes: MessageProps) {
 

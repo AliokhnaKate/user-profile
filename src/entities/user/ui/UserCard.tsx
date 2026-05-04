@@ -1,12 +1,11 @@
 import {useState} from "react";
-import styles from '../../../App.module.css';
-import ClickableBox from "../../../shared/ui/Button/Button";
-import UserPosts from "../../../widgets/PostList/UserPosts";
-import UserTodos from "../../../widgets/PostList/UserTodos";
-import type {UserModel, UserPhotoModel} from "../../[entity]/model/types";
+import styles from '../../../app/App.module.css';
+import ClickableBox from "../../../shared/ui/сlickableBox/ClickableBox";
 import {useNavigate, useParams} from "react-router-dom";
-import UserPhotoAlbums from "../../../widgets/PostList/UserPhotoAlbums";
-import UserPhotos from "../../../widgets/PostList/UserPhotos";
+import type {UserModel} from "../model/types";
+import UserPhotoAlbumsList from "../../../widgets/userPhotoAlbumsList/ui/UserPhotoAlbumsList";
+import UserPhotosList from "../../../widgets/userPhotosList/ui/UserPhotosList";
+import UserPostsList from "../../../widgets/userPostsList/ui/UserPostsList";
 
 interface UserCardProps {
     user?: UserModel | null
@@ -42,15 +41,6 @@ function UserCard({user}: UserCardProps) {
             <div className={styles.user}>
                 <div>
                     <h3>{user?.name}</h3>
-                    {/* должен открываться портал с задачами */}
-                    {/* <ClickableBox to='/users/:id/todos' onClick={(event) => {
-                            event.currentTarget,
-                            setShow(show === 'todos' ? null : 'todos')
-                        }
-                    }>
-                            еще
-                        {show === 'todos' && <UserTodos />}
-                    </ClickableBox> */}
                 </div>
 
                 <div>
@@ -66,7 +56,7 @@ function UserCard({user}: UserCardProps) {
                         }
                     }>
                         Фото
-                        {show === 'photos' && <UserPhotos mode='preview' />}
+                        {show === 'photos' && <UserPhotosList mode='preview' />}
                     </ClickableBox>
 
                     <ClickableBox to={`/users/${id}/albums`} onClick={(event) => {
@@ -74,7 +64,7 @@ function UserCard({user}: UserCardProps) {
                         }
                     }>
                         Фотоальбомы
-                        {show === 'albums' && <UserPhotoAlbums mode='preview' />}
+                        {show === 'albums' && <UserPhotoAlbumsList mode='preview' />}
                     </ClickableBox>
                 </div>
 
@@ -87,7 +77,7 @@ function UserCard({user}: UserCardProps) {
                 </button>
 
                 <div>
-                    <UserPosts />
+                    <UserPostsList />
                 </div>    
             </div>
         </>
