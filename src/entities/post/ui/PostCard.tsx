@@ -1,10 +1,10 @@
 import {FaRegComment} from 'react-icons/fa';
-import styles from '../../../App.module.css';
-import type {PostsWithUserName} from '../../../widgets/PostList/PostsList';
+import styles from '../../../app/App.module.css';
 import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
-import PostDetailModal from '../../../shared/ui/Modal/PostDetailModal';
-import {commentsApi} from '../../[entity]/api/Api';
+import PostDetailModal from '../../../features/postDetailModal/ui/PostDetailModal';
+import type {PostsWithUserName} from '../model/types';
+import {commentsApi} from '../../comment/api/commentsApi';
 
 const {useGetCommentsQuery} = commentsApi;
 
